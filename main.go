@@ -9,10 +9,10 @@ import (
 func printLine(titleStr string) {
 	lineLen := len(titleStr) + 4
 	fmt.Println()
-	blah := strings.Repeat("-", lineLen)
-	fmt.Println(blah)
+	lineStr := strings.Repeat("-", lineLen)
+	fmt.Println(lineStr)
 	fmt.Println("| " + titleStr + " |")
-	fmt.Println(blah)
+	fmt.Println(lineStr)
 }
 
 func printSizesOfTypes() {
@@ -96,7 +96,37 @@ func initializationAndDefaultValues() {
 	fmt.Println("uninitializedBool -", uninitializedBool)
 	shorthandVal := 200
 	fmt.Println("shorthandVal -", shorthandVal)
+}
 
+func loops() {
+	printLine("Loops")
+	i := 9
+	for i >= 0 {
+		fmt.Println("i", i)
+		i--
+	}
+	fmt.Println("i after", i)
+
+	for j := 7; j <= 9; j++ {
+		fmt.Println("j", j)
+	}
+
+	for {
+		fmt.Println("loop will be printing I break it")
+		i = i - 1
+		if i <= -5 {
+			break
+		}
+	}
+
+	for n := 0; n <= 5; n++ {
+		if n%2 == 0 {
+			fmt.Println("Skipping even numbers")
+			fmt.Println("Skipping even numbers")
+			continue
+		}
+		fmt.Println(n)
+	}
 }
 
 func main() {
@@ -105,4 +135,5 @@ func main() {
 	primitiveOperations()
 	initializationAndDefaultValues()
 	printSizesOfTypes()
+	loops()
 }
