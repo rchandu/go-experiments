@@ -108,10 +108,12 @@ func loops() {
 	}
 	fmt.Println("i after", i)
 
+	// For loop with initialization inside loop. Here j is not available outside of for context
 	for j := 7; j <= 9; j++ {
 		fmt.Println("j", j)
 	}
 
+	// while(true) kind of loop
 	for {
 		fmt.Println("loop will be printing I break it")
 		i = i - 1
@@ -134,6 +136,7 @@ func tryingOutSwitch() {
 	printLine("Switch statement")
 
 	i := 2
+	// Regular switch based on value
 	switch i {
 	case 1:
 		fmt.Println("Hello from 1")
@@ -144,6 +147,7 @@ func tryingOutSwitch() {
 	}
 
 	switch time.Now().Weekday() {
+	// You can have multiple cases be pointing to a single case
 	case time.Saturday, time.Sunday:
 		fmt.Println("It's the weekend")
 	default:
@@ -151,6 +155,7 @@ func tryingOutSwitch() {
 	}
 
 	t := time.Now()
+	// Switch doesn't really need an expression at top - weird but really cool
 	switch {
 	case t.Hour() < 4:
 		fmt.Println("Night owl I see")
@@ -166,11 +171,13 @@ func tryingOutSwitch() {
 		fmt.Println("It's night")
 	}
 
+	// We are creating a basic struct
 	type task struct {
 		name string
 	}
 
 	whatAmI := func(i interface{}) {
+		// This is a type switch. This compares type of value rather than value
 		switch t := i.(type) {
 		case bool:
 			fmt.Println("I'm a bool")
@@ -188,6 +195,10 @@ func tryingOutSwitch() {
 	whatAmI("hey")
 	whatAmI(task{name: "Do something"})
 }
+
+// func learnArrays() {
+
+// }
 
 func main() {
 	// Printing on console is done through fmt package.
