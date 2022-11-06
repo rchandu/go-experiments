@@ -1,4 +1,4 @@
-package division
+package main
 
 import (
 	"fmt"

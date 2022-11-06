@@ -1,4 +1,4 @@
-package zooProblem
+package main
 
 import (
 	"fmt"
