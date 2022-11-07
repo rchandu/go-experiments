@@ -1,23 +1,13 @@
-package main
+package basics
 
 import (
 	"fmt"
-	"strings"
-	"time"
+	"rchandu/experiments/utils"
 	"unsafe"
 )
 
-func printLine(titleStr string) {
-	lineLen := len(titleStr) + 4
-	fmt.Println()
-	lineStr := strings.Repeat("-", lineLen)
-	fmt.Println(lineStr)
-	fmt.Println("| " + titleStr + " |")
-	fmt.Println(lineStr)
-}
-
 func printSizesOfTypes() {
-	printLine("Sizes of different types")
+	utils.PrintLine("Sizes of different types")
 
 	var c_1 complex64
 	fmt.Printf("The size of complex64 is %d\n", unsafe.Sizeof(c_1))
@@ -70,7 +60,7 @@ func primitiveOperations() {
 	// It also contains numerous different int and float types with differing storages
 
 	// String concatenation works too
-	printLine("Operations between different types")
+	utils.PrintLine("Operations between different types")
 	fmt.Println("strings" + " are " + "concatenated")
 
 	// Regular numeric math operations
@@ -81,12 +71,12 @@ func primitiveOperations() {
 	fmt.Println("true && false", true && false)
 	fmt.Println("true || false", true || false)
 	fmt.Println("!true", !true)
-	fmt.Println("!!true", !!true)
+	fmt.Println("!!true", true)
 }
 
 func initializationAndDefaultValues() {
 	// Initialization and unintialized values of different types
-	printLine("Initialization and Uninitalized variables:")
+	utils.PrintLine("Initialization and Uninitalized variables:")
 	var a = "initial"
 	fmt.Println("variable with initial value: ", a)
 	var uninitializedInt int
@@ -99,113 +89,12 @@ func initializationAndDefaultValues() {
 	fmt.Println("shorthandVal -", shorthandVal)
 }
 
-func loops() {
-	printLine("Loops")
-	i := 9
-	for i >= 0 {
-		fmt.Println("i", i)
-		i--
-	}
-	fmt.Println("i after", i)
-
-	// For loop with initialization inside loop. Here j is not available outside of for context
-	for j := 7; j <= 9; j++ {
-		fmt.Println("j", j)
-	}
-
-	// while(true) kind of loop
-	for {
-		fmt.Println("loop will be printing I break it")
-		i = i - 1
-		if i <= -5 {
-			break
-		}
-	}
-
-	for n := 0; n <= 5; n++ {
-		if n%2 == 0 {
-			fmt.Println("Skipping even numbers")
-			fmt.Println("Skipping even numbers")
-			continue
-		}
-		fmt.Println(n)
-	}
-}
-
-func tryingOutSwitch() {
-	printLine("Switch statement")
-
-	i := 2
-	// Regular switch based on value
-	switch i {
-	case 1:
-		fmt.Println("Hello from 1")
-	case 2:
-		fmt.Println("Hello from 2")
-	case 3:
-		fmt.Println("Hello from 3")
-	}
-
-	switch time.Now().Weekday() {
-	// You can have multiple cases be pointing to a single case
-	case time.Saturday, time.Sunday:
-		fmt.Println("It's the weekend")
-	default:
-		fmt.Println("It's a weekday")
-	}
-
-	t := time.Now()
-	// Switch doesn't really need an expression at top - weird but really cool
-	switch {
-	case t.Hour() < 4:
-		fmt.Println("Night owl I see")
-	case t.Hour() < 6:
-		fmt.Println("Way too early in the morning...")
-	case t.Hour() < 10:
-		fmt.Println("Freshly morning")
-	case t.Hour() < 12:
-		fmt.Println("It's before noon")
-	case t.Hour() < 8 || t.Hour() > 3:
-		fmt.Println("It's evening time!!!")
-	default:
-		fmt.Println("It's night")
-	}
-
-	// We are creating a basic struct
-	type task struct {
-		name string
-	}
-
-	whatAmI := func(i interface{}) {
-		// This is a type switch. This compares type of value rather than value
-		switch t := i.(type) {
-		case bool:
-			fmt.Println("I'm a bool")
-		case int:
-			fmt.Println("I'm an int")
-		case task:
-			fmt.Println("A task struct type")
-		default:
-			fmt.Printf("Don't know type %T\n", t)
-		}
-	}
-
-	whatAmI(true)
-	whatAmI(1)
-	whatAmI("hey")
-	whatAmI(task{name: "Do something"})
-}
-
-// func learnArrays() {
-
-// }
-
-func main() {
+func Baiscs() {
 	// Printing on console is done through fmt package.
 	fmt.Println("hello there!")
 	primitiveOperations()
 	initializationAndDefaultValues()
 	printSizesOfTypes()
-	loops()
-	tryingOutSwitch()
+	LoopExperiment()
+	SwitchExperiment()
 }
